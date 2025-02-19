@@ -1,3 +1,4 @@
+#pre-problem
 #http://dsbpython.openjudge.cn/2024allhw/004/
 
 class Node:
