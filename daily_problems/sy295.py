@@ -1,3 +1,5 @@
+#pre-problem
+
 def generate_sequences(stack, in_stack, out_stack, output):
     if len(in_stack) == 0 and len(stack) == 0:
         output.append(out_stack)
