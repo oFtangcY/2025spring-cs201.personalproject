@@ -1,3 +1,5 @@
+#pre-problem
+
 class Node:
     def __init__(self, data, next=None):
         self.data, self.next = data, next
