@@ -1,3 +1,5 @@
+#pre-problem
+
 mid_suffix_expression = input().split()
 
 while len(mid_suffix_expression) > 1:
