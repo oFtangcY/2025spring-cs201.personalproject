@@ -1,3 +1,5 @@
+#pre-problem
+
 def cal_poland_expression(expression):
     current = []
     for dig in expression:
