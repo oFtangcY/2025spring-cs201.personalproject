@@ -1,6 +1,6 @@
 # https://leetcode.cn/problems/min-cost-to-connect-all-points/description/
 # Kruskal Algorithm, see https://www.w3schools.com/dsa/dsa_algo_mst_kruskal.php
-# disjoint set to judge circles
+#  disjoint set to judge circles
 
 class Solution:
     def minCostConnectPoints(self, points: list[list[int]]) -> int:
