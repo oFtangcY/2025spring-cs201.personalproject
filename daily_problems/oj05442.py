@@ -1,9 +1,13 @@
-import  sys
+# http://cs101.openjudge.cn/2025sp_routine/05442/
+# Prim Algorithm, see https://www.w3schools.com/dsa/dsa_algo_mst_prim.php
+# also can use kruskal's algorithm
+
+import sys
+import heapq
 from collections import defaultdict
 
-def add_edges(adj_table: dict[str: dict], edges: list):
+def add_edges(adj_table, edges):
     node = edges[0]
-    adj_table[node] = {}
     m = int(edges[1])
     for i in range(2, 2 * m + 2, 2):
         adj_table[node][edges[i]] = int(edges[i + 1])
@@ -14,19 +18,20 @@ def prim_algorithm(adj_table, n):
         return 0
 
     cost = 0
-    connected_nodes = set()
-    path = defaultdict(lambda :float('inf'))
-    path['A'] = 0
+    connected_nodes = {'A'}
+    heap = []
+    for key, value in adj_table['A'].items():
+        heapq.heappush(heap, (value, key))
     while len(connected_nodes) < n:
-        v = min((node for node in path.keys() if node not in connected_nodes), key=lambda node:path[node])
-        w = path[v]
+        w, v = heapq.heappop(heap)
+        if v in connected_nodes:
+            continue
 
         cost += w
         connected_nodes.add(v)
         for key, value in adj_table[v].items():
             if key not in connected_nodes:
-                path[key] = value
-        print(v, w)
+                heapq.heappush(heap, (value, key))
 
     return cost
 
@@ -38,7 +43,7 @@ def main():
         info = sys.stdin.readline().split()
         add_edges(adj_table, info)
 
-    res = prim_algorithm(adj_table, n - 1)
+    res = prim_algorithm(adj_table, n)
     print(res)
 
 if __name__ == "__main__":
